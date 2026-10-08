@@ -612,7 +612,7 @@ function undo() {
       state.shapes[key] = state.shapes[key].filter(s => s !== last.shape)
     }
   }
-  setStatus('Undo eseguito')
+  setStatus('Undo executed')
 }
 
 function redo() {
@@ -632,7 +632,7 @@ function redo() {
     if (!state.shapes[key]) state.shapes[key] = []
     state.shapes[key].push(op.shape)
   }
-  setStatus('Redo eseguito')
+  setStatus('Redo executed')
 }
 
 function bindGlobalUI() {
@@ -654,14 +654,14 @@ function bindGlobalUI() {
   safeListen('imageAddInput', 'change', e => {
     const f = e.target.files && e.target.files[0]
     if (!f) return
-    setStatus('Caricamento immagine...')
+    setStatus('Loading image...')
     const reader = new FileReader()
     reader.onload = () => {
       state.imageToPlace = reader.result
       enableAnnotMode('addImage')
       setStatus('Clicca sulla pagina per posizionare l\'immagine')
     }
-    reader.onerror = () => setStatus('Errore lettura immagine')
+    reader.onerror = () => setStatus('Error reading image')
     reader.readAsDataURL(f)
     e.target.value = ''
   })
@@ -672,25 +672,25 @@ function bindGlobalUI() {
 
   safeListen('saveCloudBtn', 'click', async () => {
     if (!state.pdfBytes || !isPdf(state.pdfBytes)) {
-      setStatus('Nessun PDF valido da salvare.');
+      setStatus('No valid PDF to save.');
       return
     }
-    setStatus('Upload in corso...')
+    setStatus('Uploading...')
     try {
       const blob = new Blob([state.pdfBytes], { type: 'application/pdf' })
       const form = new FormData()
       form.append('file', blob, 'document.pdf')
       const resp = await fetch('/api/save', { method: 'POST', body: form })
       const json = await resp.json()
-      setStatus(json.message || 'File inviato!')
+      setStatus(json.message || 'File uploaded!')
     } catch (e) {
-      setStatus('Errore upload: ' + e.message)
+      setStatus('Upload error: ' + e.message)
     }
   })
 
   safeListen('downloadBtn', 'click', () => {
     if (!state.pdfBytes || !isPdf(state.pdfBytes)) {
-      setStatus('Nessun PDF valido da scaricare.')
+      setStatus('No valid PDF to download.')
       return
     }
     const blob = new Blob([state.pdfBytes], { type: 'application/pdf' })
@@ -702,26 +702,26 @@ function bindGlobalUI() {
 
   safeListen('addTextBoxBtn', 'click', () => {
     enableAnnotMode('addText')
-    setStatus('Clicca sulla pagina per aggiungere testo')
+    setStatus('Click on the page to add text')
   })
 
   safeListen('extractBtn', 'click', async () => {
     if (!state.pdfBytes || state.selectedPages.size === 0) return
-    setStatus('Estrazione pagine…')
+    setStatus('Extracting pages...')
     const bytes = await PdfService.extractPages(state.pdfBytes, Array.from(state.selectedPages).sort((a, b) => a - b))
     await loadPdfFromBytes(bytes)
   })
 
   safeListen('rotateBtn', 'click', async () => {
     if (!state.pdfBytes || state.selectedPages.size === 0) return
-    setStatus('Rotazione pagine…')
+    setStatus('Rotating pages...')
     const bytes = await PdfService.rotatePages(state.pdfBytes, Array.from(state.selectedPages), 90)
     await loadPdfFromBytes(bytes)
   })
 
   safeListen('reorderBtn', 'click', async () => {
     if (!state.pdfBytes || state.pageOrder.length === 0) return
-    setStatus('Riordino pagine…')
+    setStatus('Reordering pages...')
     const bytes = await PdfService.reorderPages(state.pdfBytes, state.pageOrder)
     await loadPdfFromBytes(bytes)
   })
@@ -748,7 +748,7 @@ function bindGlobalUI() {
   safeListen('addTextBoxBtn', 'click', () => {
     enableAnnotMode('addText')
     setActiveTool('addTextBoxBtn')
-    setStatus('Clicca sulla pagina per aggiungere un testo')
+    setStatus('Click on the page to add text')
   })
 
   safeListen('shapeBtn', 'click', () => {
@@ -1056,7 +1056,7 @@ function bindGlobalUI() {
       enableAnnotMode('addImage')
       setStatus('Clicca sulla pagina per posizionare l’immagine HD')
     }
-    reader.onerror = () => setStatus('Errore lettura immagine')
+    reader.onerror = () => setStatus('Error reading image')
     reader.readAsDataURL(f)
   })
 }
@@ -1088,7 +1088,7 @@ function initializeApp() {
     })
     console.log('\u2713 resources bound')
     console.log('>>> APP READY')
-    document.getElementById('status').textContent = 'Editor pronto - scegli un PDF o trascina qui'
+    document.getElementById('status').textContent = 'Editor ready - scegli un PDF o trascina qui'
   } catch (e) {
     console.error('>>> INIT ERROR:', e)
     document.getElementById('status').textContent = 'ERRORE: ' + e.message

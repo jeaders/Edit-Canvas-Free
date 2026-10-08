@@ -59,25 +59,25 @@
         </div>
         <div class="topbar-divider"></div>
         <div class="file-actions">
-          <label class="topbar-btn primary" title="Carica PDF">
+          <label class="topbar-btn primary" title="Load PDF">
             <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/></svg>
-            Carica PDF
+            Load PDF
             <input id="fileInput" type="file" accept="application/pdf" multiple>
           </label>
           <label class="topbar-btn" title="Carica immagine">
             <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
-            Immagine
+            Image
             <input id="imageFileInput" type="file" accept="image/*" multiple>
           </label>
-          <button id="newPdfBtn" class="topbar-btn" title="Nuovo PDF">
+          <button id="newPdfBtn" class="topbar-btn" title="New PDF">
             <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 4v16m8-8H4"/></svg>
-            Nuovo
+            New
           </button>
           <select id="templateSelect" class="topbar-select" title="Template">
-            <option value="blank">Vuoto</option>
+            <option value="blank">Blank</option>
             <option value="cv">CV Pro</option>
             <option value="presentation">Slide</option>
-            <option value="letter">Lettera</option>
+            <option value="letter">Letter</option>
           </select>
         </div>
       </div>
@@ -85,19 +85,19 @@
       <div class="topbar-center">
         <!-- Contextual Formatting Bar (Text) -->
         <div id="formattingBar" class="ctx-bar hidden">
-          <select id="fontFamily" class="ctx-select" title="Carattere">
+          <select id="fontFamily" class="ctx-select" title="Font">
             <option value="Helvetica">Helvetica</option>
             <option value="TimesRoman">Times New Roman</option>
             <option value="Courier">Courier</option>
             <option value="Georgia">Georgia</option>
             <option value="Arial">Arial</option>
           </select>
-          <input type="number" id="fontSize" class="ctx-input-num" value="16" min="6" max="144" title="Dimensione">
-          <div class="ctx-color-wrap" title="Colore testo">
+          <input type="number" id="fontSize" class="ctx-input-num" value="16" min="6" max="144" title="Size">
+          <div class="ctx-color-wrap" title="Color testo">
             <input type="color" id="fontColor" value="#000000">
           </div>
-          <button id="boldBtn" class="ctx-toggle-btn" title="Grassetto"><b>B</b></button>
-          <button id="italicBtn" class="ctx-toggle-btn" title="Corsivo"><i>I</i></button>
+          <button id="boldBtn" class="ctx-toggle-btn" title="Bold"><b>B</b></button>
+          <button id="italicBtn" class="ctx-toggle-btn" title="Italic"><i>I</i></button>
           <button id="underlineBtn" class="ctx-toggle-btn" title="Sottolineato"><u>U</u></button>
           <div class="ctx-divider"></div>
           <button id="alignLeftBtn" class="ctx-toggle-btn" title="Allinea sinistra">
@@ -115,16 +115,16 @@
 
         <!-- Drawing Options Bar -->
         <div id="drawingBar" class="ctx-bar hidden">
-          <span class="ctx-label">Colore</span>
+          <span class="ctx-label">Color</span>
           <div class="ctx-color-wrap">
             <input type="color" id="strokeColor" value="#6e44ff">
           </div>
-          <span class="ctx-label">Spessore</span>
+          <span class="ctx-label">Stroke Width</span>
           <input type="number" id="strokeWidth" class="ctx-input-num" value="3" min="1" max="20">
           <select id="shapeType" class="ctx-select" title="Tipo forma">
-            <option value="rect">Rettangolo</option>
-            <option value="circle">Cerchio</option>
-            <option value="line">Linea</option>
+            <option value="rect">Rectangle</option>
+            <option value="circle">Circle</option>
+            <option value="line">Line</option>
             <option value="arrow">Freccia</option>
             <option value="star">Stella</option>
             <option value="triangle">Triangolo</option>
@@ -148,7 +148,7 @@
           <button id="imgFlipV" class="ctx-toggle-btn" title="Specchia verticale">
             <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 12h18M7 4l5 4 5-4M7 20l5-4 5 4"/></svg>
           </button>
-          <button id="imgRotate" class="ctx-toggle-btn" title="Ruota 90°">
+          <button id="imgRotate" class="ctx-toggle-btn" title="Rotate 90°">
             <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M1 4v6h6M3.51 15a9 9 0 102.13-9.36L1 10"/></svg>
           </button>
           <div class="ctx-divider"></div>
@@ -204,13 +204,13 @@
             <span>+ Testo</span>
           </button>
 
-          <label class="tool-btn" title="Aggiungi Immagine">
+          <label class="tool-btn" title="Aggiungi Image">
             <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
-            <span>Immagine</span>
+            <span>Image</span>
             <input id="imageAddInput" type="file" accept="image/*">
           </label>
 
-          <button id="imgEditBtn" class="tool-btn" title="Effetti Immagine">
+          <button id="imgEditBtn" class="tool-btn" title="Effetti Image">
             <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
             <span>Effetti</span>
           </button>
@@ -225,9 +225,9 @@
             <span>Penna</span>
           </button>
 
-          <button id="eraserBtn" class="tool-btn" title="Gomma">
+          <button id="eraserBtn" class="tool-btn" title="Eraser">
             <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M20 20H7L3 16l10-10 7 7-3.5 3.5"/><path d="M6.5 17.5l4-4"/></svg>
-            <span>Gomma</span>
+            <span>Eraser</span>
           </button>
 
           <div class="tool-separator"></div>
@@ -237,9 +237,9 @@
             <span>Griglia</span>
           </button>
 
-          <button id="toggleLayersBtn" class="tool-btn" title="Livelli">
+          <button id="toggleLayersBtn" class="tool-btn" title="Layers">
             <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-            <span>Livelli</span>
+            <span>Layers</span>
           </button>
 
           <div class="tool-separator"></div>
@@ -261,12 +261,12 @@
             <div class="welcome-actions">
               <label class="welcome-btn primary">
                 <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/></svg>
-                Carica PDF
+                Load PDF
                 <input type="file" accept="application/pdf" multiple onchange="document.getElementById('fileInput').dispatchEvent(new Event('change')); Array.from(this.files).forEach(f => { const dt = new DataTransfer(); dt.items.add(f); document.getElementById('fileInput').files = dt.files; document.getElementById('fileInput').dispatchEvent(new Event('change')); })">
               </label>
               <button id="newPdfWelcomeBtn" class="welcome-btn">
                 <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 4v16m8-8H4"/></svg>
-                Nuovo documento
+                New documento
               </button>
             </div>
             <div class="welcome-templates">
@@ -274,7 +274,7 @@
               <div class="template-cards">
                 <div class="template-card" data-template="blank">
                   <div class="template-preview blank-preview"></div>
-                  <span>Vuoto</span>
+                  <span>Blank</span>
                 </div>
                 <div class="template-card" data-template="presentation">
                   <div class="template-preview pres-preview">
@@ -290,7 +290,7 @@
                     <div class="tp-line"></div>
                     <div class="tp-line short"></div>
                   </div>
-                  <span>Lettera</span>
+                  <span>Letter</span>
                 </div>
               </div>
               <p class="templates-label" style="margin-top:20px">CV Templates</p>
@@ -369,8 +369,8 @@
       <!-- RIGHT PANEL (Layers / Properties) -->
       <aside id="rightPanel" class="sidebar-right hidden">
         <div class="panel-tabs">
-          <button class="panel-tab active" data-panel="layers">Livelli</button>
-          <button class="panel-tab" data-panel="pages">Pagine</button>
+          <button class="panel-tab active" data-panel="layers">Layers</button>
+          <button class="panel-tab" data-panel="pages">Pages</button>
         </div>
         <div id="layersPanel" class="panel-content active">
           <ul id="layersList" class="layers-list"></ul>
@@ -384,11 +384,11 @@
 
     <!-- BOTTOM STATUS BAR -->
     <footer class="statusbar">
-      <div id="status" class="status-text">Editor pronto</div>
+      <div id="status" class="status-text">Editor ready</div>
       <div class="statusbar-right">
         <button id="applyTextBtn" class="apply-btn">
           <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
-          Applica modifiche
+          Apply changes
         </button>
         <span class="copyright">Edit Canvas Free</span>
       </div>
