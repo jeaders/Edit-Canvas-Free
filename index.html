@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+  <meta name="theme-color" content="#7c3aed">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Edit Canvas">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="msapplication-TileColor" content="#7c3aed">
+  <meta name="msapplication-tap-highlight" content="no">
+  <title>Edit Canvas Free - Editor PDF e Immagini Online | Alex Mirici</title>
+  <meta name="description" content="Edit Canvas Free - Editor PDF e immagini gratuito online. Modifica, ritaglia, ridimensiona e scarica i tuoi documenti PDF e immagini direttamente nel browser. Creato da Alex Mirici.">
+  <meta name="keywords" content="editor PDF, modifica PDF, ritaglia immagini, ridimensiona immagini, editor immagini online, Alex Mirici, edit canvas, PDF editor, image editor, free PDF editor">
+  <meta name="author" content="Alex Mirici">
+  <meta name="creator" content="Alex Mirici">
+  <meta name="publisher" content="Alex Mirici">
+  <meta name="robots" content="index, follow">
+  <meta name="googlebot" content="index, follow">
+  <meta name="google-site-verification" content="5bcC3H8bW5Y0H1xXQ5qURNMZOI11aW2zsfbgZONunok" />
+  <link rel="canonical" href="https://alexmirici.netlify.app/">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://alexmirici.netlify.app/">
+  <meta property="og:title" content="Edit Canvas Free - Editor PDF e Immagini Online">
+  <meta property="og:description" content="Editor PDF e immagini gratuito online. Modifica, ritaglia, ridimensiona e scarica i tuoi documenti.">
+  <meta property="og:image" content="https://alexmirici.netlify.app/assets/og-image.png">
+  <meta property="og:site_name" content="Edit Canvas Free - Alex Mirici">
+  <meta property="og:locale" content="it_IT">
+  
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://alexmirici.netlify.app/">
+  <meta name="twitter:title" content="Edit Canvas Free - Editor PDF e Immagini Online">
+  <meta name="twitter:description" content="Editor PDF e immagini gratuito online. Modifica, ritaglia, ridimensiona e scarica i tuoi documenti.">
+  <meta name="twitter:image" content="https://alexmirici.netlify.app/assets/og-image.png">
+  <meta name="twitter:creator" content="@alexmirici">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="apple-touch-icon" href="/assets/icon-192.png">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✦</text></svg>">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+
+<body>
+  <div class="app">
+
+    <!-- TOP BAR -->
+    <header class="topbar">
+      <div class="topbar-left">
+        <div class="brand">
+          <div class="logo-mark">✦</div>
+          <span class="brand-name">Edit Canvas</span>
+          <span class="brand-badge">Free</span>
+        </div>
+        <div class="topbar-divider"></div>
+        <div class="file-actions">
+          <label class="topbar-btn primary" title="Carica PDF">
+            <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/></svg>
+            Carica PDF
+            <input id="fileInput" type="file" accept="application/pdf" multiple>
+          </label>
+          <label class="topbar-btn" title="Carica immagine">
+            <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+            Immagine
+            <input id="imageFileInput" type="file" accept="image/*" multiple>
+          </label>
+          <button id="newPdfBtn" class="topbar-btn" title="Nuovo PDF">
+            <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 4v16m8-8H4"/></svg>
+            Nuovo
+          </button>
+          <select id="templateSelect" class="topbar-select" title="Template">
+            <option value="blank">Vuoto</option>
+            <option value="cv">CV Pro</option>
+            <option value="presentation">Slide</option>
+            <option value="letter">Lettera</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="topbar-center">
+        <!-- Contextual Formatting Bar (Text) -->
+        <div id="formattingBar" class="ctx-bar hidden">
+          <select id="fontFamily" class="ctx-select" title="Carattere">
+            <option value="Helvetica">Helvetica</option>
+            <option value="TimesRoman">Times New Roman</option>
+            <option value="Courier">Courier</option>
+            <option value="Georgia">Georgia</option>
+            <option value="Arial">Arial</option>
+          </select>
+          <input type="number" id="fontSize" class="ctx-input-num" value="16" min="6" max="144" title="Dimensione">
+          <div class="ctx-color-wrap" title="Colore testo">
+            <input type="color" id="fontColor" value="#000000">
+          </div>
+          <button id="boldBtn" class="ctx-toggle-btn" title="Grassetto"><b>B</b></button>
+          <button id="italicBtn" class="ctx-toggle-btn" title="Corsivo"><i>I</i></button>
+          <button id="underlineBtn" class="ctx-toggle-btn" title="Sottolineato"><u>U</u></button>
+          <div class="ctx-divider"></div>
+          <button id="alignLeftBtn" class="ctx-toggle-btn" title="Allinea sinistra">
+            <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 6h18M3 12h12M3 18h15"/></svg>
+          </button>
+          <button id="alignCenterBtn" class="ctx-toggle-btn" title="Centra">
+            <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 6h18M6 12h12M4 18h16"/></svg>
+          </button>
+          <button id="alignRightBtn" class="ctx-toggle-btn" title="Allinea destra">
+            <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 6h18M9 12h12M6 18h15"/></svg>
+          </button>
+          <div class="ctx-divider"></div>
+          <button id="closeFormat" class="ctx-close-btn" title="Chiudi">&times;</button>
+        </div>
+
+        <!-- Drawing Options Bar -->
+        <div id="drawingBar" class="ctx-bar hidden">
+          <span class="ctx-label">Colore</span>
+          <div class="ctx-color-wrap">
+            <input type="color" id="strokeColor" value="#6e44ff">
+          </div>
+          <span class="ctx-label">Spessore</span>
+          <input type="number" id="strokeWidth" class="ctx-input-num" value="3" min="1" max="20">
+          <select id="shapeType" class="ctx-select" title="Tipo forma">
+            <option value="rect">Rettangolo</option>
+            <option value="circle">Cerchio</option>
+            <option value="line">Linea</option>
+            <option value="arrow">Freccia</option>
+            <option value="star">Stella</option>
+            <option value="triangle">Triangolo</option>
+          </select>
+          <div class="ctx-divider"></div>
+          <button id="closeDrawing" class="ctx-close-btn">&times;</button>
+        </div>
+
+        <!-- Image Editing Bar -->
+        <div id="imageEditBar" class="ctx-bar hidden">
+          <span class="ctx-label">Luminosità</span>
+          <input type="range" id="imgBrightness" class="ctx-range" min="-100" max="100" value="0" title="Luminosità">
+          <span class="ctx-label">Contrasto</span>
+          <input type="range" id="imgContrast" class="ctx-range" min="-100" max="100" value="0" title="Contrasto">
+          <span class="ctx-label">Saturazione</span>
+          <input type="range" id="imgSaturation" class="ctx-range" min="-100" max="100" value="0" title="Saturazione">
+          <div class="ctx-divider"></div>
+          <button id="imgFlipH" class="ctx-toggle-btn" title="Specchia orizzontale">
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 3v18M4 7l4 5-4 5M20 7l-4 5 4 5"/></svg>
+          </button>
+          <button id="imgFlipV" class="ctx-toggle-btn" title="Specchia verticale">
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 12h18M7 4l5 4 5-4M7 20l5-4 5 4"/></svg>
+          </button>
+          <button id="imgRotate" class="ctx-toggle-btn" title="Ruota 90°">
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M1 4v6h6M3.51 15a9 9 0 102.13-9.36L1 10"/></svg>
+          </button>
+          <div class="ctx-divider"></div>
+          <select id="imgFilter" class="ctx-select" title="Filtro">
+            <option value="none">Nessun filtro</option>
+            <option value="grayscale">Bianco e nero</option>
+            <option value="sepia">Seppia</option>
+            <option value="blur">Sfocato</option>
+            <option value="sharpen">Nitido</option>
+            <option value="vintage">Vintage</option>
+          </select>
+          <button id="closeImageEdit" class="ctx-close-btn">&times;</button>
+        </div>
+      </div>
+
+      <div class="topbar-right">
+        <button id="undoBtn" class="topbar-icon-btn" title="Annulla (Ctrl+Z)">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6"/></svg>
+        </button>
+        <button id="redoBtn" class="topbar-icon-btn" title="Ripristina (Ctrl+Y)">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10h-10a8 8 0 00-8 8v2m18-10l-6 6m6-6l-6-6"/></svg>
+        </button>
+        <div class="topbar-divider"></div>
+        <button id="exportPngBtn" class="topbar-btn" title="Esporta PNG">
+          <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9l4-4 4 4 4-4 4 4"/></svg>
+          PNG
+        </button>
+        <button id="saveCloudBtn" class="topbar-btn" title="Salva su cloud">
+          <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 15a4 4 0 014-4h1a5 5 0 0110 0h1a4 4 0 014 4v2H3v-2z"/><path d="M16 13l-4 4-4-4"/></svg>
+          Cloud
+        </button>
+        <button id="downloadBtn" class="topbar-btn success" title="Scarica PDF">
+          <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+          Scarica
+        </button>
+      </div>
+    </header>
+
+    <!-- MAIN WORKSPACE -->
+    <div class="workspace">
+
+      <!-- LEFT SIDEBAR (Tools) -->
+      <aside class="sidebar-left">
+        <div class="sidebar-tools">
+
+          <button id="textEditToggle" class="tool-btn" title="Modifica Testo">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
+            <span>Testo</span>
+          </button>
+
+          <button id="addTextBoxBtn" class="tool-btn" title="Aggiungi Casella Testo">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M8 12h8M12 8v8"/></svg>
+            <span>+ Testo</span>
+          </button>
+
+          <label class="tool-btn" title="Aggiungi Immagine">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+            <span>Immagine</span>
+            <input id="imageAddInput" type="file" accept="image/*">
+          </label>
+
+          <button id="imgEditBtn" class="tool-btn" title="Effetti Immagine">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
+            <span>Effetti</span>
+          </button>
+
+          <button id="shapeBtn" class="tool-btn" title="Aggiungi Forma">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/></svg>
+            <span>Forma</span>
+          </button>
+
+          <button id="penBtn" class="tool-btn" title="Penna Libera">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/></svg>
+            <span>Penna</span>
+          </button>
+
+          <button id="eraserBtn" class="tool-btn" title="Gomma">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M20 20H7L3 16l10-10 7 7-3.5 3.5"/><path d="M6.5 17.5l4-4"/></svg>
+            <span>Gomma</span>
+          </button>
+
+          <div class="tool-separator"></div>
+
+          <button id="toggleGridBtn" class="tool-btn" title="Griglia">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M4 4h16M4 12h16M4 20h16M12 4v16"/></svg>
+            <span>Griglia</span>
+          </button>
+
+          <button id="toggleLayersBtn" class="tool-btn" title="Livelli">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+            <span>Livelli</span>
+          </button>
+
+          <div class="tool-separator"></div>
+
+          <button id="clearAllTextBtn" class="tool-btn danger" title="Pulisci Testo">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
+            <span>Pulisci</span>
+          </button>
+        </div>
+      </aside>
+
+      <!-- CANVAS AREA -->
+      <section class="canvas-area" id="viewer">
+        <div id="pages" class="pages">
+          <div class="welcome-screen">
+            <div class="welcome-icon">✦</div>
+            <h1>Edit Canvas Free</h1>
+            <p>Trascina un PDF qui oppure usa i pulsanti in alto per iniziare</p>
+            <div class="welcome-actions">
+              <label class="welcome-btn primary">
+                <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/></svg>
+                Carica PDF
+                <input type="file" accept="application/pdf" multiple onchange="document.getElementById('fileInput').dispatchEvent(new Event('change')); Array.from(this.files).forEach(f => { const dt = new DataTransfer(); dt.items.add(f); document.getElementById('fileInput').files = dt.files; document.getElementById('fileInput').dispatchEvent(new Event('change')); })">
+              </label>
+              <button id="newPdfWelcomeBtn" class="welcome-btn">
+                <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 4v16m8-8H4"/></svg>
+                Nuovo documento
+              </button>
+            </div>
+            <div class="welcome-templates">
+              <p class="templates-label">Documenti vuoti</p>
+              <div class="template-cards">
+                <div class="template-card" data-template="blank">
+                  <div class="template-preview blank-preview"></div>
+                  <span>Vuoto</span>
+                </div>
+                <div class="template-card" data-template="presentation">
+                  <div class="template-preview pres-preview">
+                    <div class="tp-header"></div>
+                    <div class="tp-body"></div>
+                  </div>
+                  <span>Slide</span>
+                </div>
+                <div class="template-card" data-template="letter">
+                  <div class="template-preview letter-preview">
+                    <div class="tp-line short"></div>
+                    <div class="tp-line"></div>
+                    <div class="tp-line"></div>
+                    <div class="tp-line short"></div>
+                  </div>
+                  <span>Lettera</span>
+                </div>
+              </div>
+              <p class="templates-label" style="margin-top:20px">CV Templates</p>
+              <div class="template-cards">
+                <div class="template-card" data-template="cv-harvard">
+                  <div class="template-preview cv-preview cv-harvard-prev">
+                    <div class="tp-line thick" style="background:#1a1a2e"></div>
+                    <div class="tp-line short"></div>
+                    <div class="tp-line"></div>
+                    <div class="tp-line short"></div>
+                    <div class="tp-line"></div>
+                  </div>
+                  <span>Harvard</span>
+                </div>
+                <div class="template-card" data-template="cv-modern">
+                  <div class="template-preview cv-preview cv-modern-prev">
+                    <div style="display:flex;gap:4px;height:100%">
+                      <div style="width:30%;background:#7c3aed;border-radius:2px"></div>
+                      <div style="flex:1;display:flex;flex-direction:column;gap:4px;padding-top:4px">
+                        <div class="tp-line thick"></div>
+                        <div class="tp-line short"></div>
+                        <div class="tp-line"></div>
+                      </div>
+                    </div>
+                  </div>
+                  <span>Moderno</span>
+                </div>
+                <div class="template-card" data-template="cv-classic">
+                  <div class="template-preview cv-preview">
+                    <div class="tp-line thick" style="background:#374151"></div>
+                    <div class="tp-line short" style="background:#6b7280"></div>
+                    <div class="tp-line"></div>
+                    <div class="tp-line"></div>
+                    <div class="tp-line short"></div>
+                  </div>
+                  <span>Classico</span>
+                </div>
+                <div class="template-card" data-template="cv-creative">
+                  <div class="template-preview cv-preview">
+                    <div class="tp-header" style="background:linear-gradient(135deg,#7c3aed,#db2777);height:20px"></div>
+                    <div class="tp-line short" style="margin-top:4px"></div>
+                    <div class="tp-line"></div>
+                    <div class="tp-line short"></div>
+                  </div>
+                  <span>Creativo</span>
+                </div>
+                <div class="template-card" data-template="cv-minimal">
+                  <div class="template-preview cv-preview">
+                    <div class="tp-line thick" style="background:#000;width:40%"></div>
+                    <div class="tp-line short" style="background:#9ca3af"></div>
+                    <div class="tp-line"></div>
+                    <div class="tp-line"></div>
+                  </div>
+                  <span>Minimal</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Zoom Controls -->
+        <div class="zoom-controls">
+          <button id="zoomOutBtn" class="zoom-btn" title="Riduci (-)">
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14"/></svg>
+          </button>
+          <span id="zoomLabel" class="zoom-label">80%</span>
+          <button id="zoomInBtn" class="zoom-btn" title="Ingrandisci (+)">
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+          </button>
+          <button id="zoomFitBtn" class="zoom-btn zoom-fit" title="Adatta alla finestra">
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"/></svg>
+          </button>
+        </div>
+      </section>
+
+      <!-- RIGHT PANEL (Layers / Properties) -->
+      <aside id="rightPanel" class="sidebar-right hidden">
+        <div class="panel-tabs">
+          <button class="panel-tab active" data-panel="layers">Livelli</button>
+          <button class="panel-tab" data-panel="pages">Pagine</button>
+        </div>
+        <div id="layersPanel" class="panel-content active">
+          <ul id="layersList" class="layers-list"></ul>
+        </div>
+        <div id="pagesPanel" class="panel-content">
+          <div id="pagesThumbs" class="pages-thumbs"></div>
+        </div>
+      </aside>
+
+    </div>
+
+    <!-- BOTTOM STATUS BAR -->
+    <footer class="statusbar">
+      <div id="status" class="status-text">Editor pronto</div>
+      <div class="statusbar-right">
+        <button id="applyTextBtn" class="apply-btn">
+          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+          Applica modifiche
+        </button>
+        <span class="copyright">Edit Canvas Free - Alex Mirici Web Dev</span>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- Load dependencies from CDN FIRST, before ES modules -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+
+  <script type="module" src="assets/renderService.js"></script>
+  <script type="module" src="assets/pdfService.js"></script>
+  <script type="module" src="assets/app.js"></script>
+  <script type="module" src="assets/ui.js"></script>
+</body>
+
+</html>

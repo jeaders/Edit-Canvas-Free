@@ -1,0 +1,27 @@
+{
+  "name": "edit-canvas-free",
+  "version": "1.0.0",
+  "description": "Web-based PDF/canvas editor with Canva-like features",
+  "main": "index.html",
+  "scripts": {
+    "dev": "vite --open",
+    "build": "vite build",
+    "serve": "vite preview"
+  },
+  "keywords": [
+    "pdf",
+    "editor",
+    "canvas",
+    "canva",
+    "javascript"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "pdf-lib": "^1.17.1",
+    "pdfjs-dist": "^3.7.107"
+  },
+  "devDependencies": {
+    "vite": "^4.4.9"
+  }
+}

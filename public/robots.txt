@@ -1,0 +1,25 @@
+# Robots.txt per Edit Canvas Free
+# https://alexmirici.netlify.app
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://alexmirici.netlify.app/sitemap.xml
+
+# Regole specifiche per i motori di ricerca
+User-agent: Googlebot
+Allow: /
+Sitemap: https://alexmirici.netlify.app/sitemap.xml
+
+User-agent: Bingbot
+Allow: /
+Sitemap: https://alexmirici.netlify.app/sitemap.xml
+
+User-agent: Yandex
+Allow: /
+Sitemap: https://alexmirici.netlify.app/sitemap.xml
+
+# Disallow percorsi non indicizzabili (se necessario)
+# Disallow: /api/
+# Disallow: /private/
