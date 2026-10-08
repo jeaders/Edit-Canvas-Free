@@ -1,44 +1,53 @@
 # Edit Canvas Free
 
-Questo progetto è un editor web ispirato a Canva, con capacità di modificare PDF e disegnare liberamente.
-È stato derivato da un precedente "PDF Editor Pro" e ampliato con strumenti innovativi (forme, esportazione PNG, gestore livelli base, ecc.).
+A free, web-based canvas editor inspired by Canva, built for PDF editing, drawing, and graphic design. Edit PDFs, add shapes, draw freehand, manage layers, and export your work as PNG images.
 
-## Funzionalità principali
+Live demo: [https://editcanvasfree.netlify.app](https://editcanvasfree.netlify.app)
 
-- Modifica testi e immagini dei PDF
-- Aggiungi, ridimensiona e sposta caselle di testo
-- Disegna con penna, gomma, aggiungi forme (rettangoli, cerchi, linee)
-- Pulsante per attivare una griglia di allineamento
-- Pannello "Livelli" che mostra conteggi di testo/immagini/forme/disegni
-- Pannello "Risorse" con elementi grafici pronti da trascinare
-- Drag‑and‑drop di PDF e immagini; le immagini vengono convertite in PDF automaticamente
-- Esporta la prima pagina come immagine PNG
-- Pulsante "Cloud" per inviare il file a un endpoint (stub)
-- Bottone placeholder per collaborazione in tempo reale
-- Interfaccia "Canva style" con barra strumenti contestuale
+## Features
 
-## Ambiente di sviluppo
+- **PDF Editing**: Edit text and images in PDF documents directly in your browser
+- **Canvas Drawing**: Freehand drawing with pen, eraser, and custom stroke settings
+- **Shapes**: Add rectangles, circles/ellipses, triangles, lines, and polygons
+- **Text Tool**: Add, resize, and position text boxes
+- **Layer Management**: Track and manage text, images, shapes, and drawings in a dedicated Layers panel
+- **Resources Panel**: Drag-and-drop ready graphic elements
+- **Drag & Drop**: Easily import PDFs and images (images are automatically converted to PDF when needed)
+- **Alignment Grid**: Toggle an alignment grid for precise positioning
+- **Export**: Export your canvas or PDF page as PNG images
+- **Canva-style UI**: Clean, intuitive interface with contextual toolbar
+- **Modern Tech Stack**: Built with Vite, vanilla JavaScript, and PDF.js
 
-Il progetto utilizza Vite come server di sviluppo. Le librerie PDF sono ora installate tramite npm anziché dai CDN.
+## Development
 
-### Installazione
+This project uses Vite for the development server and build process.
+
+### Installation
 
 ```bash
 npm install
 ```
-### Avviare il server di sviluppo
+
+### Start Development Server
 
 ```bash
 npm run dev
 ```
 
-Apri il browser all'indirizzo mostrato (di solito http://localhost:5173) e modifica i file: la pagina si ricaricherà automaticamente.
+Open your browser to the address shown (usually http://localhost:5173). Changes to files will auto-reload.
 
-### Build di produzione
+### Build for Production
 
 ```bash
 npm run build
-npm run serve   # per provare la versione ottimizzata
 ```
 
-Buon lavoro con **Edit Canvas Free**! 😊
+### Preview Production Build
+
+```bash
+npm run serve
+```
+
+## License
+
+Free to use for personal and commercial projects.
